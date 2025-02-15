@@ -1,0 +1,12 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Circle -->
+  <circle cx="100" cy="100" r="90" fill="#314158"/>
+
+  <!-- Angular A Shape -->
+  <polygon points="100,40 60,140 80,140 90,115 110,115 120,140 140,140" 
+           fill="white"/>
+
+  <!-- Horizontal Bar of "A" -->
+  <rect x="85" y="105" width="30" height="6" fill="#314158"/>
+</svg>
+

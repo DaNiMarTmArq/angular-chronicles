@@ -1,12 +1,16 @@
+@let currentPost = post();
+
 <article
   class="mb-5 flex flex-col-reverse gap-5 md:flex-row md:gap-15 md:justify-between border-1 border-white border-b-slate-700"
 >
   <div class="mb-4 flex-1">
-    <h3 class="mb-4 text-xl text-slate-700 font-bold">{{ post()?.title }}</h3>
+    <h3 class="mb-4 text-xl text-slate-700 font-bold">
+      {{ currentPost?.title }}
+    </h3>
 
     @if (isExpanded()) {
     <p>
-      {{ post()?.body }}
+      {{ currentPost?.body }}
       <span
         (click)="toggleIsExpanded()"
         class="font-bold cursor-pointer text-slate-700 hover:underline"
@@ -15,7 +19,7 @@
     </p>
     } @else {
     <p>
-      {{ post()?.body?.slice(0, 200) + "..." }}
+      {{ currentPost?.body?.slice(0, 200) }}...
       <span
         (click)="toggleIsExpanded()"
         class="font-bold cursor-pointer text-slate-700 hover:underline"
@@ -25,11 +29,12 @@
 
     }
   </div>
-  <div class="mb-4 w-[300px]">
+  <div class="mb-4">
     <img
-      [src]="post()?.imageURL ? post()?.imageURL : 'angular-logo.png'"
+      [src]="currentPost?.imageURL ?? 'angular-logo.png'"
       alt="logo"
       loading="eager"
+      class="mb-4 w-[300px]"
     />
   </div>
 </article>

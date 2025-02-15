@@ -1,0 +1,12 @@
+<section
+  class="my-8 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg"
+>
+  <div class="p-5 md:p-15">
+    <h2 class="mb-6 text-2xl text-slate-700 font-bold">Últimas crónicas</h2>
+    <div>
+      @for (post of postList(); track $index) {
+      <app-article [post]="post" />
+      }
+    </div>
+  </div>
+</section>

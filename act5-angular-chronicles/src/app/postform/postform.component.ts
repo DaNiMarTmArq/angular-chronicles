@@ -10,6 +10,6 @@ export class PostformComponent {
   date = new Date();
   placeholders = {
     title: 'Signals, la nueva forma de gestionar datos reactivos',
-    body: 'En Angular, utilizmos signals para crear y administrar el estado...',
+    body: 'En Angular, utilizamos signals para crear y administrar el estado...',
   };
 }

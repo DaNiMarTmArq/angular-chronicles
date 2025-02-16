@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BloglistComponent } from './bloglist/bloglist.component';
 import { BlogPost } from '../BlogPost';
+import { PostformComponent } from './postform/postform.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, BloglistComponent],
+  imports: [NavbarComponent, BloglistComponent, PostformComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

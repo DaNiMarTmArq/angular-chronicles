@@ -1,5 +1,5 @@
 <section
-  class="p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
+  class="h-full p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
 >
   <div class="flex gap-3">
     <img
@@ -14,7 +14,33 @@
       </p>
     </div>
   </div>
-  <div>
-    <form action="">Form</form>
+  <div class="my-6">
+    <form>
+      <label for="title" class="block text-xl text-slate-700 font-bold"
+        >Título:</label
+      >
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [placeholder]="placeholders.title"
+        required
+        class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+      />
+      <label for="body" class="block text-xl text-slate-700 font-bold"
+        >Cuerpo:</label
+      >
+      <textarea
+        type="textarea"
+        id="body"
+        name="body"
+        [placeholder]="placeholders.body"
+        class="w-full h-[200px] p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+      ></textarea>
+
+      <button type="submit" class="my-6 p-4 bg-slate-700 text-white rounded-lg">
+        Publicar
+      </button>
+    </form>
   </div>
 </section>

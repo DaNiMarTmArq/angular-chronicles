@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class PostformComponent {
   date = new Date();
   placeholders = {
-    title: 'Signals, la nueva forma de gestionar datos reactivos',
+    title: 'Reactividad con signals',
     body: 'En Angular, utilizamos signals para crear y administrar el estado...',
   };
 }

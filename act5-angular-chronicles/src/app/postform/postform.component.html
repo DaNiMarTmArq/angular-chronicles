@@ -36,18 +36,36 @@
         name="body"
         [placeholder]="placeholders.body"
         class="w-full h-[200px] p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+        required
       ></textarea>
+
+      <label
+        for="title"
+        class="block text-xl text-slate-700 font-bold"
+        [hidden]="imageToggle()"
+        >Imagen:</label
+      >
+      <input
+        type="text"
+        id="image"
+        name="image"
+        [placeholder]="placeholders.image"
+        [hidden]="imageToggle()"
+        class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+      />
 
       <div>
         <img
           src="image-icon.svg"
           alt="delete icon"
           class="inline w-[30px] hover:cursor-pointer"
+          (click)="toggleImageField()"
         />
         <img
           src="delete-icon.svg"
           alt="delete icon"
           class="inline w-[25px] ml-4 hover:cursor-pointer"
+          (click)="toggleDeleteModal()"
         />
       </div>
 
@@ -60,3 +78,29 @@
     </form>
   </div>
 </section>
+
+<div
+  class="fixed inset-0 flex items-center justify-center bg-black/40 p-4 z-10"
+  [hidden]="deleteModalToggle()"
+>
+  <div
+    class="p-5 bg-white border border-slate-700 rounded-md drop-shadow-lg z-10 max-w-md w-full"
+  >
+    <p class="text-xl text-slate-700 font-bold">¿Quieres descartar el post?</p>
+    <p class="text-slate-600">Los cambios se perderán</p>
+    <div class="flex gap-3 mt-5">
+      <button
+        class="flex-1 py-3 bg-slate-100 rounded-lg hover:bg-slate-200 hover:cursor-pointer"
+        (click)="toggleDeleteModal()"
+      >
+        Cancelar
+      </button>
+      <button
+        class="flex-1 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 hover:cursor-pointer"
+        (click)="deleteForm()"
+      >
+        Descartar
+      </button>
+    </div>
+  </div>
+</div>

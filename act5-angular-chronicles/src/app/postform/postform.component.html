@@ -26,6 +26,7 @@
         [placeholder]="placeholders.title"
         required
         class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+        [(ngModel)]="title"
       />
       <label for="body" class="block text-xl text-slate-700 font-bold"
         >Cuerpo:</label
@@ -37,6 +38,7 @@
         [placeholder]="placeholders.body"
         class="w-full h-[200px] p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
         required
+        [(ngModel)]="body"
       ></textarea>
 
       <label
@@ -52,6 +54,7 @@
         [placeholder]="placeholders.image"
         [hidden]="imageToggle()"
         class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+        [(ngModel)]="imageURL"
       />
 
       <div>
@@ -61,17 +64,21 @@
           class="inline w-[30px] hover:cursor-pointer"
           (click)="toggleImageField()"
         />
+        @if (body.length > 0) {
         <img
           src="delete-icon.svg"
           alt="delete icon"
           class="inline w-[25px] ml-4 hover:cursor-pointer"
           (click)="toggleDeleteModal()"
         />
+        <p class="my-2">{{ body.length }} caracteres escritos</p>
+        }
       </div>
 
       <button
         type="submit"
-        class="my-6 p-4 bg-slate-700 text-white rounded-lg hover:cursor-pointer"
+        [ngClass]="submitClasses"
+        class="my-6 p-4 text-white rounded-lg bg-slate-700"
       >
         Publicar
       </button>

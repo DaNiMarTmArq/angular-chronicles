@@ -1,5 +1,5 @@
 <section
-  class="h-full max-h-[800px] p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
+  class="p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
 >
   <div class="flex gap-3">
     <img
@@ -10,7 +10,7 @@
     <div>
       <p class="text-xl text-slate-700 font-bold">Editor de post</p>
       <p class="text-sm text-slate-700">
-        Fecha de publicación: {{ date.toDateString() }}
+        Fecha de publicación: {{ date.toDateString() | date : "mediumDate" }}
       </p>
     </div>
   </div>

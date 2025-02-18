@@ -24,7 +24,7 @@ export class AppComponent {
       title:
         'Two-Way Binding en Angular: Sincronización entre la vista y el modelo',
       body: 'El Two-Way Binding en Angular permite sincronizar automáticamente los datos entre el modelo y la vista, facilitando la gestión del estado en formularios y componentes interactivos. Esto se logra con la directiva `[(ngModel)]`, que mantiene los cambios reflejados en ambas direcciones. En este artículo, exploraremos cómo funciona, cuándo utilizarlo y cuáles son sus alternativas en formularios reactivos.',
-      publishedAt: new Date('2025-02-15'),
+      publishedAt: new Date('2025-02-14'),
     },
   ];
   handleNewPost(newPost: BlogPost) {

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { BlogPost } from '../../BlogPost';
-import { NgClass, NgFor } from '@angular/common';
+import { DatePipe, NgClass, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-postform',
-  imports: [FormsModule, NgClass],
+  imports: [FormsModule, NgClass, DatePipe],
   templateUrl: './postform.component.html',
   styleUrl: './postform.component.css',
 })

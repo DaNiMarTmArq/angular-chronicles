@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="my-6">
-    <form>
+    <form #postForm="ngForm" (ngSubmit)="handlePostCreation(postForm)">
       <label for="title" class="block text-xl text-slate-700 font-bold"
         >Título:</label
       >
@@ -26,11 +26,16 @@
         [placeholder]="placeholders.title"
         required
         class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
-        [(ngModel)]="title"
+        ngModel
+        #titleInput="ngModel"
       />
+      @if (titleInput.touched && !titleInput.valid) {
+      <p class="my-2 text-red-500">El título es obligatorio.</p>
+      }
       <label for="body" class="block text-xl text-slate-700 font-bold"
         >Cuerpo:</label
       >
+
       <textarea
         type="textarea"
         id="body"
@@ -38,13 +43,17 @@
         [placeholder]="placeholders.body"
         class="w-full h-[200px] p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
         required
-        [(ngModel)]="body"
+        ngModel
+        #textArea="ngModel"
       ></textarea>
+      @if (textArea.touched && !textArea.valid) {
+      <p class="my-2 text-red-500">Este campo es obligatorio.</p>
+      }
 
       <label
         for="title"
         class="block text-xl text-slate-700 font-bold"
-        [hidden]="imageToggle()"
+        [hidden]="imageToggle"
         >Imagen:</label
       >
       <input
@@ -52,10 +61,18 @@
         id="image"
         name="image"
         [placeholder]="placeholders.image"
-        [hidden]="imageToggle()"
+        [hidden]="imageToggle"
         class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
-        [(ngModel)]="imageURL"
+        ngModel
+        pattern="https:\/\/.*\.(?:png|jpg|jpeg)(\?.*)?$"
+        #imageInput="ngModel"
       />
+      @if (imageInput.touched && !imageInput.valid) {
+      <p class="my-2 text-red-500">
+        Debes rellenar este campo con un enlace váido
+        ("https:\/\/.*\.(?:png|jpg|jpeg)").
+      </p>
+      }
 
       <div>
         <img
@@ -64,21 +81,22 @@
           class="inline w-[30px] hover:cursor-pointer"
           (click)="toggleImageField()"
         />
-        @if (body.length > 0) {
+        @if (textArea.value.length) {
         <img
           src="delete-icon.svg"
           alt="delete icon"
           class="inline w-[25px] ml-4 hover:cursor-pointer"
           (click)="toggleDeleteModal()"
         />
-        <p class="my-2">{{ body.length }} caracteres escritos</p>
+        <p class="my-2">{{ textArea.value.length }} caracteres escritos</p>
         }
       </div>
 
       <button
         type="submit"
-        [ngClass]="submitClasses"
-        class="my-6 p-4 text-white rounded-lg bg-slate-700"
+        class="my-6 p-4 text-white rounded-lg bg-slate-400"
+        [ngClass]="{ 'hover:cursor-pointer bg-slate-700': postForm.valid }"
+        [disabled]="!postForm.valid"
       >
         Publicar
       </button>
@@ -86,9 +104,9 @@
   </div>
 </section>
 
+@if (!deleteModalToggle) {
 <div
   class="fixed inset-0 flex items-center justify-center bg-black/40 p-4 z-10"
-  [hidden]="deleteModalToggle()"
 >
   <div
     class="p-5 bg-white border border-slate-700 rounded-md drop-shadow-lg z-10 max-w-md w-full"
@@ -104,10 +122,11 @@
       </button>
       <button
         class="flex-1 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 hover:cursor-pointer"
-        (click)="deleteForm()"
+        (click)="resetForm(postForm)"
       >
         Descartar
       </button>
     </div>
   </div>
 </div>
+}

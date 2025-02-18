@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { BlogPost } from '../../BlogPost';
-import { NgClass } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-postform',
@@ -10,43 +10,44 @@ import { NgClass } from '@angular/common';
   styleUrl: './postform.component.css',
 })
 export class PostformComponent {
+  @Output('newPost') newPostEmitter = new EventEmitter<BlogPost>();
   placeholders = {
     title: 'Reactividad con signals',
     body: 'En Angular, utilizamos signals para crear y administrar el estado...',
-    image:
-      'https://fastly.picsum.photos/id/1/5000/3333.jpg?hmac=Asv2DU3rA_5D1xSe22xZK47WEAN0wjWeFOhzd13ujW4',
+    image: 'https://example.com/image.jpg',
   };
   date = new Date();
-  title: string = '';
-  body: string = '';
-  imageURL: string = '';
-  imageToggle = signal(true);
-  deleteModalToggle = signal(true);
-
-  get submitClasses() {
-    const isValid = this.title.length > 0 && this.body.length > 0;
-    return {
-      'hover:cursor-pointer': isValid,
-      'opacity-50': !isValid,
-    };
-  }
+  imageToggle = true;
+  deleteModalToggle = true;
 
   toggleImageField() {
-    this.imageToggle.set(!this.imageToggle());
+    this.imageToggle = !this.imageToggle;
   }
   toggleDeleteModal() {
-    this.deleteModalToggle.set(!this.deleteModalToggle());
+    this.deleteModalToggle = !this.deleteModalToggle;
   }
-  handlePostCreation(): BlogPost {
-    return {
-      title: this.title,
-      body: this.body,
-      imageURL: this.imageURL,
+  handlePostCreation(form: NgForm) {
+    const { title, body, image } = form.value;
+    const newPost: BlogPost = {
+      title,
+      body,
+      imageURL: image,
       publishedAt: this.date,
     };
+    this.newPostEmitter.emit(newPost);
+    form.reset({
+      title: '',
+      body: '',
+      image: '',
+    });
   }
-  deleteForm() {
-    (this.title = ''), (this.body = ''), (this.imageURL = '');
+  resetForm(form: NgForm) {
+    form.reset({
+      title: '',
+      body: '',
+      image: '',
+    });
     this.toggleDeleteModal();
+    if (!this.imageToggle) this.toggleImageField();
   }
 }

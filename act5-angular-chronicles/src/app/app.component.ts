@@ -27,4 +27,7 @@ export class AppComponent {
       publishedAt: new Date('2025-02-15'),
     },
   ];
+  handleNewPost(newPost: BlogPost) {
+    this.blogPosts = [newPost, ...this.blogPosts];
+  }
 }

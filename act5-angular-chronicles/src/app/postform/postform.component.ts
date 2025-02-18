@@ -40,6 +40,7 @@ export class PostformComponent {
       body: '',
       image: '',
     });
+    if (!this.imageToggle) this.toggleImageField();
   }
   resetForm(form: NgForm) {
     form.reset({

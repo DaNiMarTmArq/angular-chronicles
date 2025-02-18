@@ -4,7 +4,7 @@
   <div
     class="flex flex-col gap-2 my-8 w-full px-[16px] md:max-w-[1200px] md:mr-auto ml-auto md:flex-row"
   >
-    <app-postform />
+    <app-postform (newPost)="handleNewPost($event)" />
     <app-bloglist [postList]="blogPosts" />
   </div>
 </main>

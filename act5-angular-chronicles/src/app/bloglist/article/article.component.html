@@ -19,19 +19,22 @@
     </p>
     } @else {
     <p>
-      {{ currentPost?.body?.slice(0, 200) }}...
+      @let blogSliced = currentPost?.body?.slice(0, 200);
+      {{ blogSliced }}
+      @if (blogSliced && blogSliced.length > 50) {
       <span
         (click)="toggleIsExpanded()"
         class="font-bold cursor-pointer text-slate-700 hover:underline"
-        >Ver más</span
+        >...Ver más</span
       >
+      }
     </p>
 
     }
   </div>
   <div class="mb-4">
     <img
-      [src]="currentPost?.imageURL ?? 'angular-logo.png'"
+      [src]="currentPost?.imageURL ? currentPost?.imageURL : 'angular-logo.png'"
       alt="logo"
       loading="eager"
       class="mb-4 w-[300px]"

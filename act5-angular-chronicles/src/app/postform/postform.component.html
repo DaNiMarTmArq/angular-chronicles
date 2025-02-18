@@ -1,5 +1,5 @@
 <section
-  class="h-full p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
+  class="h-full max-h-[800px] p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
 >
   <div class="flex gap-3">
     <img
@@ -81,7 +81,7 @@
           class="inline w-[30px] hover:cursor-pointer"
           (click)="toggleImageField()"
         />
-        @if (textArea.value.length) {
+        @if (textArea.value) {
         <img
           src="delete-icon.svg"
           alt="delete icon"

@@ -3,10 +3,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BloglistComponent } from './bloglist/bloglist.component';
 import { BlogPost } from '../BlogPost';
 import { PostformComponent } from './postform/postform.component';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, BloglistComponent, PostformComponent],
+  imports: [
+    NavbarComponent,
+    BloglistComponent,
+    PostformComponent,
+    CardComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -27,6 +33,13 @@ export class AppComponent {
       publishedAt: new Date('2025-02-14'),
     },
   ];
+  get totalWords(): number {
+    const countWords = (text: string) => text.trim().split(/\s+/).length;
+    return this.blogPosts.reduce(
+      (acc, curr) => acc + (countWords(curr.body) || 0),
+      0
+    );
+  }
   handleNewPost(newPost: BlogPost) {
     this.blogPosts = [newPost, ...this.blogPosts];
   }

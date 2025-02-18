@@ -4,9 +4,12 @@
   class="mb-5 flex flex-col-reverse gap-5 md:flex-row md:gap-15 md:justify-between border-1 border-white border-b-slate-700"
 >
   <div class="mb-4 flex-1">
-    <h3 class="mb-4 text-xl text-slate-700 font-bold">
+    <h3 class="mb-1 text-xl text-slate-700 font-bold">
       {{ currentPost?.title }}
     </h3>
+    <p class="mb-4 text-slate-500">
+      {{ currentPost?.publishedAt | date : "mediumDate" }}
+    </p>
 
     @if (isExpanded()) {
     <p>

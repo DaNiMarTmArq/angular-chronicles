@@ -1,9 +1,10 @@
 import { Component, input, signal } from '@angular/core';
 import { BlogPost } from '../../../BlogPost';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-article',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './article.component.html',
 })
 export class ArticleComponent {

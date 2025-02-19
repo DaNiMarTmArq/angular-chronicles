@@ -16,7 +16,7 @@ import { CardComponent } from './card/card.component';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'act5-angular-chronicles';
+  title = 'crónicas de angular';
   blogPosts: BlogPost[] = [
     {
       title: 'Cómo funciona el ciclo de vida de los componentes en Angular',

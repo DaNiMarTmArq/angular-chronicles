@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  blogTitle = 'angular chronicles';
+  blogTitle = input('');
 }

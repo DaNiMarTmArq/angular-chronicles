@@ -1,14 +1,14 @@
 <section
-  class="p-5 bg-white border-1 border-slate-700 rounded-md drop-shadow-lg md:w-[350px]"
+  class="rounded-md border-1 border-slate-700 bg-white p-5 drop-shadow-lg md:w-[350px]"
 >
   <div class="flex gap-3">
     <img
       src="editor.svg"
       alt="editor-icon"
-      class="relative w-[35px] top-[-5px] md:top-[-6px]"
+      class="relative top-[-5px] w-[35px] md:top-[-6px]"
     />
     <div>
-      <p class="text-xl text-slate-700 font-bold">Editor de post</p>
+      <p class="text-xl font-bold text-slate-700">Editor de post</p>
       <p class="text-sm text-slate-700">
         Fecha de publicación: {{ date.toDateString() | date : "mediumDate" }}
       </p>
@@ -16,7 +16,7 @@
   </div>
   <div class="my-6">
     <form #postForm="ngForm" (ngSubmit)="handlePostCreation(postForm)">
-      <label for="title" class="block text-xl text-slate-700 font-bold"
+      <label for="title" class="block text-xl font-bold text-slate-700"
         >Título:</label
       >
       <input
@@ -25,14 +25,14 @@
         name="title"
         [placeholder]="placeholders.title"
         required
-        class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+        class="my-2 w-full rounded-lg border border-slate-700 bg-slate-200 p-4"
         ngModel
         #titleInput="ngModel"
       />
       @if (titleInput.touched && !titleInput.valid) {
       <p class="my-2 text-red-500">El título es obligatorio.</p>
       }
-      <label for="body" class="block text-xl text-slate-700 font-bold"
+      <label for="body" class="block text-xl font-bold text-slate-700"
         >Cuerpo:</label
       >
 
@@ -41,7 +41,7 @@
         id="body"
         name="body"
         [placeholder]="placeholders.body"
-        class="w-full h-[200px] p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+        class="my-2 h-[200px] w-full rounded-lg border border-slate-700 bg-slate-200 p-4"
         required
         ngModel
         #textArea="ngModel"
@@ -52,7 +52,7 @@
 
       <label
         for="title"
-        class="block text-xl text-slate-700 font-bold"
+        class="block text-xl font-bold text-slate-700"
         [hidden]="imageToggle"
         >Imagen:</label
       >
@@ -62,7 +62,7 @@
         name="image"
         [placeholder]="placeholders.image"
         [hidden]="imageToggle"
-        class="w-full p-4 my-2 rounded-lg border border-slate-700 bg-slate-200"
+        class="my-2 w-full rounded-lg border border-slate-700 bg-slate-200 p-4"
         ngModel
         pattern="https:\/\/.*\.(?:png|jpg|jpeg)(\?.*)?$"
         #imageInput="ngModel"
@@ -106,22 +106,22 @@
 
 @if (!deleteModalToggle) {
 <div
-  class="fixed inset-0 flex items-center justify-center bg-black/40 p-4 z-10"
+  class="fixed inset-0 z-10 flex items-center justify-center bg-black/40 p-4"
 >
   <div
-    class="p-5 bg-white border border-slate-700 rounded-md drop-shadow-lg z-10 max-w-md w-full"
+    class="z-10 w-full max-w-md rounded-md border border-slate-700 bg-white p-5 drop-shadow-lg"
   >
     <p class="text-xl text-slate-700 font-bold">¿Quieres descartar el post?</p>
     <p class="text-slate-600">Los cambios se perderán</p>
     <div class="flex gap-3 mt-5">
       <button
-        class="flex-1 py-3 bg-slate-100 rounded-lg hover:bg-slate-200 hover:cursor-pointer"
+        class="flex-1 rounded-lg bg-slate-100 py-3 hover:cursor-pointer hover:bg-slate-200"
         (click)="toggleDeleteModal()"
       >
         Cancelar
       </button>
       <button
-        class="flex-1 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 hover:cursor-pointer"
+        class="flex-1 rounded-lg bg-red-600 py-3 text-white hover:cursor-pointer hover:bg-red-700"
         (click)="resetForm(postForm)"
       >
         Descartar

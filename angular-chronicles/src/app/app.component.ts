@@ -14,7 +14,6 @@ import { CardComponent } from './card/card.component';
     CardComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'act5-angular-chronicles';

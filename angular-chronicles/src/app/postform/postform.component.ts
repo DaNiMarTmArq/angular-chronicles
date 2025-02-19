@@ -1,13 +1,12 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
-import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { DatePipe, NgClass } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { BlogPost } from '../../BlogPost';
-import { DatePipe, NgClass, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-postform',
   imports: [FormsModule, NgClass, DatePipe],
   templateUrl: './postform.component.html',
-  styleUrl: './postform.component.css',
 })
 export class PostformComponent {
   @Output('newPost') newPostEmitter = new EventEmitter<BlogPost>();

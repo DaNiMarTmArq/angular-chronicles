@@ -1,1 +1,1 @@
-"Angular Chronicles" es una aplicación de blogging construida con Angular.
+"Angular Chronicles" es una aplicación de blogging construida con Angular. La aplicación Angular 

@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { BlogPost } from '../../BlogPost';
 
@@ -9,7 +9,7 @@ import { BlogPost } from '../../BlogPost';
   templateUrl: './postform.component.html',
 })
 export class PostformComponent {
-  @Output('newPost') newPostEmitter = new EventEmitter<BlogPost>();
+  newPostEmitter = output<BlogPost>({ alias: 'newPost' });
   placeholders = {
     title: 'Reactividad con signals',
     body: 'En Angular, utilizamos signals para crear y administrar el estado...',
